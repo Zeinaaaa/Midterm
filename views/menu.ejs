@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Home Page</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
   <!-- adding bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -12,29 +14,47 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
 
-<body>
-  <header>
-    <div>
-      login
-    </div>
-    <div>
-      register
-    </div>
-    <div>
-      menu
-    </div>
-  </header>
-  <h1> Be a foodie</h1>
-  <form>
-    <input type="text" >
-    <button>order now</button>
-  </form>
+  <!-- to enable the spinner -->
+  <script src="src/bootstrap-input-spinner.js"></script>
+<script>
+    $("input[type='number']").inputSpinner();
+</script>
+
+</head>
+<body class="menu">
+  <h1>This is the menu page prototype</h1>
+  <p><h3>Starters</h3></p>
+  <section>
+    <div class="menuContainer">
+      <%for (let item of menu) { %>
+        <div class="menuItem">
+          <div class="menuItemLeft">
+            <%=item.name%>
+            <br>
+            <%=item.type%>
+            <br>
+            $<%=item.price%>
+          </div>
+          <div class="menuItemRight">
+            <img src="/img/profile-hex.png">
+            <form id="addToCart">
+              <input type="number" value="0" min="0" max="100" step="1"/>
+              <button type="button" class="btn btn-secondary" class="addToCartButton" type="submit">Add to cart</button>
+            </form>
+          </div>
+        </div>
+    <% } %>
+      <div>
+      <form id="checkout">
+        <button type="button" class="btn btn-warning">check out</button>
+      </form>
+   </div>
+   </div>
+  </section>
   <!-- adding bootstrapscripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
-
 </html>
