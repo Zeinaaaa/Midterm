@@ -3,11 +3,17 @@ INSERT INTO widgets (name, user_id) VALUES ('Sprockets', 1);
 INSERT INTO widgets (name, user_id) VALUES ('Chains', 2);
 INSERT INTO menu (name, components, price,type)
 VALUES
-  ('Nuts', 'spicy nuts, corn nuts, lime & black pepper', 6, 'starters'),
-  ('Beef Tartare', 'Brant Lake Waguy, gherkin, mustard, shallot, quail egg, capers, chippers', 19, 'starters'),
-  ('Scotch Egg', 'sfennel sausage, soft hen’s egg, panko, spicy mayo', 12, 'starters'),
-  ('Onion Dip', '3 cheese & caramelized onion, chippers', 12, 'starters'),
-  ('Poutine', 'potato, cheese curds, roasted chicken gravy', 9, 'starters')
+ ('Milky Way Latte', 'Milk, Espresso, Caramel syrup', 5, 'drinks'),
+  ('Galaxy Matcha', 'Matcha Powder, Milk, Classic Syrup', 5, 'drinks'),
+  ('Strawberry Neptune Refresher', 'Strawberry Juice, Black Tea, Classic Syrup', 5, 'drinks'),
+  ('Blue Moon', 'Juniper tea', 5, 'drinks'),
+  ('Flat White', 'Espresso, Milk', 5, 'drinks'),
+  ('Cosmo Brownie', 'Chocolate, Eggs, Flour, Milk, Sugar', 3.5, 'food'),
+  ('Moon Pies', 'Chocolate, Eggs, Flour, Milk, Sugar', 3.5, 'food'),
+  ('Macademia Disk', 'Chocolate, Eggs, Flour, Milk, Sugar', 3.5, 'food'),
+  ('Pesto, Chicken and Mozzerella Rockets', 'Pesto, Chicken, Mozzerella', 3.5, 'food'),
+  ('Potato and Cheese Croquettes', 'Cheese, Potato, Flour, Egg', 3.5, 'food')
+
 
 
 
