@@ -1,7 +1,7 @@
-// add an article with a menu name and its quantity to item list in cart
+// add an article to /cart page with a menu name and its quantity to item list in cart
 $(() => {
   const loadItemList = function(menu) {
-    $('#cart-item-container').prepend(`
+    $('#cart-item-container').append(`
         <article class="item-article" >
           <div class="checkbox"><input type="checkbox" class="item"></div>
           <div class="img"><img src="${menu.menu_img_url}" height="70px" width="auto"></div>
@@ -19,7 +19,14 @@ $(() => {
   `;
   const value = user_id;
   return pool.query(queryString, value)
-    .then(res => loadItemList(res.rows[0]))
+    .then(res => {
+      const data = res.rows;
+      $.get('/cart').then(data =>  {
+        for (const elm of data) {
+          loadItemList(elm);
+        }
+      })
+    })
     .catch((err) => {
       console.log(err.message);
     });

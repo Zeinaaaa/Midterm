@@ -18,10 +18,7 @@ module.exports = (db) => {
    // if logged in, get the items fron cart db using getItemsInCart()
    db.getItemsInCart(user_id)
      .then(res => {
-       const itemsInCart = res.rows;
-       console.log('got items in cart');
-       templateVars = {itemsInCart}
-       res.render('cart');
+       res.render('/cart');
      })
      .catch(err => console.log(err.message));
 
@@ -39,7 +36,7 @@ module.exports = (db) => {
    db.placeOrder(user_id)
      .then(data => {
        // return data in format of {manu_name: quantity, menu_name: quantity}
-       const order = {}
+       const order = {};
        data.forEach(elm => {
          order.elm.menu_name = elm.quantity;
        })
