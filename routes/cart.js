@@ -8,9 +8,9 @@ const placeOrder = require('../public/scripts/place-order');
 
 module.exports = (db) => {
  // direct to the /cart page and get the item list from cart db
- router.get('/cart', (req, res) => {
+ router.get('/', (req, res) => {
    // check for login
-   const user_id = /*req.session.user_id*/1;
+   const user_id = req.session.user_id;
    if (!user_id) {
      res.send('Please Login');
      // res.redirect('/login');
@@ -18,14 +18,14 @@ module.exports = (db) => {
    // if logged in, get the items fron cart db using getItemsInCart()
    db.getItemsInCart(user_id)
      .then(res => {
-       res.render('/cart');
+      res.render('/cart');
      })
      .catch(err => console.log(err.message));
 
  })
 
  router.post('/cart', (req, res) => {
-   const user_id = 1;/*req.session.user_id*/
+   const user_id = req.session.user_id;
    // check for login
    if (!user_id) {
      res.send('Please Login');
