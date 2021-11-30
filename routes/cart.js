@@ -24,12 +24,11 @@ module.exports = (db) => {
 
  })
 
- router.post('/cart', (req, res) => {
+ router.post('/', (req, res) => {
    const user_id = req.session.user_id;
    // check for login
    if (!user_id) {
      res.send('Please Login');
-     // res.redirect('/');
    }
    // if logged in, get the total amount of money
    // get res.rows[0] from placeOrder()
