@@ -6,3 +6,5 @@ CREATE TABLE order_menu (
   quantity INTEGER DEFAULT 0,
   order_menu_total INTEGER DEFAULT 0
 );
+
+
