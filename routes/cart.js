@@ -16,7 +16,7 @@ module.exports = (db) => {
     //   // res.redirect('/login');
     // }
 
-    // if logged in, get the items fron cart db using getItemsInCart()
+    // if logged in, get the items fron cart db
     const queryString = `
       SELECT * FROM items WHERE user_id = $1 GROUP BY id
     `;

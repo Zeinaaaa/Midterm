@@ -5,4 +5,5 @@ CREATE TABLE menu (
   components VARCHAR(255) NOT NULL,
   price INTEGER NOT NULL,
   type VARCHAR(225) NOT NULL
+  img VARCHAR(255)
 );
