@@ -27,7 +27,7 @@ module.exports = (db) => {
       .then(data => {
         const menu = data.rows;
         templateVars = {menu}
-        console.log("menu : ", menu);
+        // console.log("menu : ", menu);
         res.render("menu", templateVars)
       })
       .catch(err => {

@@ -52,9 +52,9 @@
 
       <% for (const item of cart) { %>
         <article class="item-article" >
-          <div class="img"><img src="./img/2-coffeeImg.png" height="70px" width="auto"></div>
+          <div class="img"><img src="<%= item.img %>" height="70px" width="auto"></div>
           <div class="name"><b><%= item.menu_name %></b></div>
-          <div class="quantity"><input type="number" value="<%= item.quantity %>"></div>
+          <div class="quantity"><%= item.quantity %></div>
           <div class="price">$<%= item.price * item.quantity %></div>
         </article>
       <% } %>
@@ -66,6 +66,11 @@
     <div id="order">
       <form action="/api/orders" method="get">
         <input type="submit" value="Order Now">
+      </form>
+    </div>
+    <div id="clear-cart">
+      <form action="/api/cart/clear" method="get">
+        <input type="submit" value="Clear Cart">
       </form>
     </div>
   </main>
