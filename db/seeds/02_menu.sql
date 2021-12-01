@@ -1,4 +1,4 @@
-INSERT INTO menu (name, components, price, type)
+INSERT INTO menu (name, components, price, type, img)
 VALUES
   ('Milky Way Latte', 'Milk, Espresso, Caramel syrup', 5, 'drinks'),
   ('Galaxy Matcha', 'Matcha Powder, Milk, Classic Syrup', 5, 'drinks'),
