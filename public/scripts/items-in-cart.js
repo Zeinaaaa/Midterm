@@ -1,12 +1,10 @@
-const loadItemList = require('./list-items-in-cart');
-
 const getItemsInCart = function(user_id) {
   const queryString = `
-    SELECT * FROM cart WHERE user_id LIKE $1 GROUP BY id
+    SELECT * FROM items WHERE user_id = $1 GROUP BY id
   `;
   const value = user_id;
   return pool.query(queryString, value)
-    .then(loadItemList())
+    .then(res => res.rows[0])
     .catch((err) => {
       console.log(err.message);
     });
