@@ -10,9 +10,10 @@ module.exports = (db) => {
 
   router.get('/', (req, res) => {
     const queryString1 = `
-      SELECT *
-      FROM items
-      WHERE user_id = $1
+      SELECT items.user_id, img, menu_name, sum(quantity) as quantity, price
+      from items
+      where user_id = $1
+      group by user_id, items.img, menu_name, price
     `;
     const values1 = [user_id];
     db.query(queryString1, values1)
@@ -23,6 +24,10 @@ module.exports = (db) => {
       data.forEach(elm => {
         order[elm.menu_name] = elm.quantity;
       })
+      // if cart ist empty, redirect to /cart page
+      if (Object.keys(order).length == 0) {
+        return res.redirect('/api/cart')
+      }
       let templateVars = { data, order }
 
       const queryString2 = `SELECT * FROM orders WHERE user_id = $1`;
