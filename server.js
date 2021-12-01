@@ -41,6 +41,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const cartRoutes = require('./routes/cart');
 const menuRoutes = require("./routes/menu");
+const orderRoutes = require('./routes/orders');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -49,6 +50,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/menu", menuRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use('/api/cart', cartRoutes(db));
+app.use('/api/orders', orderRoutes(db));
 
 // including css files
 app.use(express.static(__dirname + './public'));

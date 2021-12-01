@@ -1,0 +1,133 @@
+#cart-table-head {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  div.th-name {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+  }
+
+  div.th-quantity {
+    width: 15%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    justify-content: center;
+  }
+
+  div.th-price {
+    width: 15%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#in-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  article.order-in-progress {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    border-style: dashed;
+    border-color: #545149;
+    border-width: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    div.img {
+      width: 20%;
+      margin-left: 1%;
+      margin-right: 1%;
+      display: flex;
+      justify-content: center;
+    }
+
+    div.name {
+      width: 45%;
+      margin-left: 2%;
+      margin-right: 2%;
+      display: flex;
+      justify-content: center;
+    }
+
+    div.quantity {
+      width: 15%;
+      margin-left: 2%;
+      margin-right: 2%;
+      display: flex;
+      justify-content: center;
+    }
+
+    div.price {
+      width: 15%;
+      margin-left: 2%;
+      margin-right: 2%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+}
+
+div.waiting-time {
+  width: 40%;
+  margin-left: 10%;
+  margin-right: 50%;
+  display: flex;
+}
+
+#history-table-head {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  div.th-time {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  div.th-total {
+    width: 50%;
+    // margin-left: 2%;
+    // margin-right: 2%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+article.previous-orders {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  div.date {
+    width: 45%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.total {
+    width: 45%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
