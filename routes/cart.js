@@ -1,10 +1,6 @@
 const express = require('express');
 const router  = express.Router();
 
-const getItemsInCart = require('../public/scripts/items-in-cart');
-const addItemsToCart = require('../public/scripts/items-in-cart')
-const placeOrder = require('../public/scripts/place-order');
-
 
 module.exports = (db) => {
   // direct to the /cart page and get the item list from cart db
@@ -37,6 +33,7 @@ module.exports = (db) => {
   })
 
   // (try to) add item to cart db
+  // maybe this part shoud be with menu?
   router.post('/', (req, res) => {
     const user_id = 1;
     // // check for login
@@ -46,8 +43,8 @@ module.exports = (db) => {
 
     // if logged in, add items to db
     const queryString = `
-    INSERT INTO items(user_id, menu_id, menu_name, price, quantity)
-    VALUES ($1, $2, $3, $4, $5) RETURNING *`;
+      INSERT INTO items(user_id, menu_id, menu_name, price, quantity)
+      VALUES ($1, $2, $3, $4, $5) RETURNING *`;
     const values = [user_id, menu_id, menu_name, price, quantity];
     return db.query(queryString, values)
     .then(res => {
@@ -56,5 +53,5 @@ module.exports = (db) => {
     .catch(err => console.log(err.message));
   })
 
-return router;
+  return router;
 };
