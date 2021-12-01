@@ -53,7 +53,7 @@
      <% for (const item of cart) { %>
       <article class="item-article" >
         <div class="img"><img src="./img/2-coffeeImg.png" height="70px" width="auto"></div>
-        <div class="name"><b><%= item.name %></b></div>
+        <div class="name"><b><%= item.menu_name %></b></div>
         <div class="quantity"><input type="number" value="<%= item.quantity %>"></div>
         <div class="price">$<%= item.price * item.quantity %></div>
       </article>
