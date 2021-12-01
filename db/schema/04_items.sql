@@ -1,10 +1,12 @@
-DROP TABLE IF EXISTS order_menu CASCADE;
-CREATE TABLE order_menu (
-  id SERIAL PRIMARY KEY NOT NULL,
-  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
-  menu_id INTEGER REFERENCES menu(id) ON DELETE CASCADE,
-  quantity INTEGER DEFAULT 0,
-  order_menu_total INTEGER DEFAULT 0
+DROP TABLE IF EXISTS items CASCADE;
+CREATE TABLE items (
+ id SERIAL PRIMARY KEY NOT NULL,
+ user_id INTEGER,
+ menu_id INTEGER,
+ menu_name VARCHAR(255),
+ price INTEGER,
+ quantity SMALLINT,
+ order_menu_total INTEGER DEFAULT 0
 );
 
 
