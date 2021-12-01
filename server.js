@@ -8,11 +8,14 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+//requiring twilio after installing.
+const client = require('twilio')("AC4d8a8a28520205814a137235d8ea4c35", "9c68c46456bf0378b1d52e8e20d3695a");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
+console.log("dbParams:", dbParams);
 db.connect();
 console.log(dbParams);
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -55,6 +58,18 @@ app.use("/api/menu", menuRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+
+// this is the twilio function, can be used in any route.
+const sendTextMessage = () => {
+  client.messages.create({
+    body: 'Hello from my cafe app',
+    to: '+29055167460',
+    from: '+2075033250'
+  }).then(message => console.log(message))
+  .catch(error => console.log(error))
+}
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
