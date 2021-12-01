@@ -9,7 +9,7 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 //requiring twilio after installing.
-const client = require('twilio')("AC4d8a8a28520205814a137235d8ea4c35", "9c68c46456bf0378b1d52e8e20d3695a");
+const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
 // PG database client/connection setup
 const { Pool } = require("pg");
