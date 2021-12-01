@@ -42,6 +42,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const cartRoutes = require('./routes/cart');
 const menuRoutes = require("./routes/menu");
 
 // Mount all resource routes
@@ -50,6 +51,10 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/menu", menuRoutes(db));
 // Note: mount other resources here, using the same pattern above
+app.use('/api/cart', cartRoutes(db));
+
+// including css files
+app.use(express.static(__dirname + './public'));
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -60,15 +65,10 @@ app.get("/", (req, res) => {
 });
 
 
-// this is the twilio function, can be used in any route.
-const sendTextMessage = () => {
-  client.messages.create({
-    body: 'Hello from my cafe app',
-    to: '+29055167460',
-    from: '+2075033250'
-  }).then(message => console.log(message))
-  .catch(error => console.log(error))
-}
+app.get("/confirm", (req, res) => {
+  res.render("confirm");
+});
+
 
 
 app.listen(PORT, () => {
