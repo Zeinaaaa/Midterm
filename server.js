@@ -57,6 +57,8 @@ app.use('/api/cart', cartRoutes(db));
 app.use('/api/orders', orderRoutes(db));
 app.use('/api/search', searchRoutes(db));
 
+// including css files
+app.use(express.static(__dirname + './public'));
 
 // Home page
 // Warning: avoid creating more routes in this file!
