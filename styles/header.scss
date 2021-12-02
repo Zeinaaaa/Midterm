@@ -1,0 +1,19 @@
+.site-header {
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  top: 0;
+}
+.cup {
+  align-content: center;
+  margin-top: 10px;
+}
+
+.site-header a {
+  color: #b3b3b3;
+  transition: color .15s ease-in-out;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}

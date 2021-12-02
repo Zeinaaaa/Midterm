@@ -86,7 +86,7 @@ body {
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 .row .col-lg-4 {
@@ -95,8 +95,11 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 2em;
+  margin-top: 2em;
 
 }
+
+
 .marketing h2 {
   font-weight: 400;
 }
@@ -148,4 +151,11 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+#nav1
+{
+    background-color:#F00; /*whichever you want*/
+    opacity: 0.5;
+    filter:(opacity=50);
 }
