@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/menu.css" type="text/css" />
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -27,7 +28,23 @@
 <body>
   <!-- the navbar. -->
   <%- include('_header') %>
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <rect width="100%" height="100%" fill="#777"/>
+        <image href="https://github.com/Zeinaaaa/Midterm/blob/master/food_photos/menuphoto.png?raw=true"/>
+      </svg>
 
+      <div class="container">
+        <div class="carousel-caption text-start caption-right">
+          <h1>In a rush this morning?</h1>
+          <p>We got you covered with our limited menu of high quality coffees, teas and pastries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- looping througth the menu items -->
   <div class="row">
     <% for (let item of menu) { %>
@@ -39,7 +56,9 @@
           <h6 class="card-subtitle mb-2 text-muted">$<%=item.price%></h6>
           <form id="addToCart" method="post" action="/api/cart/<%= item.id %>">
             <input name="quantity" type="number" value="1" min="0" max="100" step="1"/>
-            <button class="btn btn-outline-secondary btn-sm" class="addToCartButton" type="submit">Add to cart</button>
+            <button class="btn btn-default btn-sm" class="addToCartButton" type="submit">Add to <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg></button>
           </form>
         </div>
       </div>
@@ -49,7 +68,11 @@
   </div>
   <div>
     <form id="checkout" method="get" action="/api/cart">
-      <button class="btn btn-warning" class="addToCartButton" type="submit">Check Out</button>
+      <button class="btn btn-warning btn-lg" class="addToCartButton" type="submit">Check Out <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+      </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+      </svg></button>
     </form>
   </div>
 
