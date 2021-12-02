@@ -21,7 +21,7 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">My cafe</a>
+        <a class="navbar-brand" href="/#">Starlight Café</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,17 +31,18 @@
               <form><button type="button" class="btn btn-dark">Log out</button></form>
             </li>
             <li class="nav-item">
-              <form><button type="button" class="btn btn-dark"> Track order</button></form>
+              <form><button type="button" class="btn btn-dark"><a href="/api/orders">Track order</a></button></form>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" method="post" action="/api/search">
+            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </div>
     </nav>
   </header>
+
   <main>
     <div id="cart-table-head">
       <div class="th-name"><b>Menu Item</b></div>
