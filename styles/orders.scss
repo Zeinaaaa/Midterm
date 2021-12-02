@@ -1,9 +1,7 @@
-// the css part of /api/cart
 #cart-table-head {
   display: flex;
   align-items: center;
   width: 90%;
-  margin-top: 50px;
   margin-left: 5%;
   margin-right: 5%;
 
@@ -30,12 +28,12 @@
   }
 }
 
-#cart-item-container {
+#in-progress {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  article.item-article {
+  article.order-in-progress {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 90%;
@@ -68,11 +66,6 @@
       margin-right: 2%;
       display: flex;
       justify-content: center;
-
-      input {
-        width: 85%;
-        display: flex;
-      }
     }
 
     div.price {
@@ -84,30 +77,57 @@
     }
   }
 
-  article:hover {
-    background-color: #f5d8bf;
-    box-shadow: 5px 5px 5px #b1b1b1;
+}
+
+div.waiting-time {
+  width: 90%;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+}
+
+#history-table-head {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  div.th-time {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+
+  div.th-total {
+    width: 50%;
+    // margin-left: 2%;
+    // margin-right: 2%;
+    display: flex;
+    justify-content: center;
   }
 }
 
-div.total {
-  width: 20%;
-  margin-left: 73%;
-  margin-right: 7%;
+article.previous-orders {
   display: flex;
-}
-
-#order {
-  display: flex;
-  justify-content: flex-end;
-  margin: 5px;
-  margin-right: 13%;
-}
-
-#clear-cart {
-  display: flex;
-  justify-content: flex-start;
-  margin: 5px;
-  margin-top: 10%;
+  flex-direction: row;
+  width: 90%;
   margin-left: 5%;
+  margin-right: 5%;
+
+  div.date {
+    width: 45%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.total {
+    width: 45%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

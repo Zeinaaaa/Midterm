@@ -9,7 +9,7 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 //requiring twilio after installing.
-const client = require('twilio')("AC4d8a8a28520205814a137235d8ea4c35", "9c68c46456bf0378b1d52e8e20d3695a");
+const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -45,6 +45,8 @@ const widgetsRoutes = require("./routes/widgets");
 const cartRoutes = require('./routes/cart');
 const menuRoutes = require("./routes/menu");
 const { Template } = require("ejs");
+const orderRoutes = require('./routes/orders');
+const searchRoutes = require('./routes/search')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -53,6 +55,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/menu", menuRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use('/api/cart', cartRoutes(db));
+app.use('/api/orders', orderRoutes(db));
+app.use('/api/search', searchRoutes(db));
 
 // including css files
 app.use(express.static(__dirname + './public'));

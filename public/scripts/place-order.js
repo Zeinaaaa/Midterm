@@ -11,12 +11,12 @@ const placeOrder = function(user_id) {
     const data = res.rows;
     const order = {};
     data.forEach(elm => {
-      order.elm.menu_name = elm.quantity;
+      order[elm.menu_name] = elm.quantity;
     })
-    console.log(order)
+    console.log(order);
     return order;
   })
   .catch(err => console.log(err.message));
 };
 
-module.exports = {placeOrder};
+module.exports = { placeOrder };

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Orders</title>
+  <!-- adding bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/orders.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/public/scripts/making-time.js"></script>
+
+</head>
+<body>
+  <!-- the navbar -->
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Starlight Café</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse" >
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <form><button type="button" class="btn btn-dark">Log out</button></form>
+            </li>
+            <li class="nav-item">
+              <form><button type="button" class="btn btn-dark"> Track order</button></form>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <h3>Your order in progress</h3>
+
+    <% const makingTime = (order) => { %>
+      <% const unitTime = 10; %>
+      <% const quantityArr = Object.values(order); %>
+      <% let totQuantity = 0 %>
+      <% quantityArr.forEach(elm => { %>
+        <% totQuantity += Number(elm) %>
+      <% }) %>
+      <% return totQuantity * unitTime; %>
+    <% } %>
+
+    <div class="waiting-time">Estimated waiting time: <%= makingTime(order) %>min</div>
+
+    <div id="cart-table-head">
+      <div class="th-name"><b>Menu Item</b></div>
+      <div class="th-quantity">Quantity</div>
+      <div class="th-price">Price</div>
+    </div>
+
+    <div id="in-progress">
+      <% for (const item of data) { %>
+        <article class="order-in-progress" >
+          <div class="img"><img src="<%= item.img %>" height="70px" width="auto"></div>
+          <div class="name"><b><%= item.menu_name %></b></div>
+          <div class="quantity"><%= item.quantity %></div>
+          <div class="price">$<%= item.price * item.quantity %></div>
+        </article>
+      <% } %>
+    </div>
+    ---------
+    <div id="previous">
+      <h3>Your order history</h3>
+      <div id="history-table-head">
+        <div class="th-time">Order Time</div>
+        <div class="th-total">Order Total</div>
+      </div>
+
+      <% for (const item of prevOrders) { %>
+        <article class="previous-orders" >
+          <div class="date"><%= item.order_date %></div>
+          <div class="total"><%= item.order_total %></div>
+        </article>
+      <% } %>
+    </div>
+  </main>
+
+</body>
+</html>
