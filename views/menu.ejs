@@ -63,7 +63,7 @@
           <h6 class="card-subtitle mb-2 text-muted">$<%=item.price%></h6>
           <form id="addToCart" method="post" action="/api/cart/<%= item.id %>">
             <input name="quantity" type="number" value="1" min="0" max="100" step="1"/>
-            <button class="btn btn-outline-secondary btn-sm" class="addToCartButton" type="submit">Add to cart</button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill" class="addToCartButton" type="submit">Add to cart</button>
         </div>
       </div>
 
