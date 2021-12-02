@@ -1,0 +1,55 @@
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgb(255,255,255, 0.4);
+  background-clip: border-box;
+  border: 3px solid rgb(129,110,92);
+  border-radius: 25px;
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.card:hover{
+  transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.btn-sm {
+  color: #b3b3b3;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid #b3b3b3;
+  border-radius: 40px;
+  transition: all 0.3s ease 0s;
+  margin-left: 5px;
+}
+
+.btn-sm {
+  color: #FFF;
+  background: rgba(138, 119, 98, 0.8);
+  border: 2px solid #FFF;
+}
+
+.btn-sm:hover {
+  color: rgba(138, 119, 98, 0.8);
+  background: #FFF;
+  border: 2px solid rgba(138, 119, 98, 0.8);
+}
+
+
+.btn-lg {
+  color: #FFF;
+  background: rgba(138, 119, 98, 0.8);
+  border: 2px solid #FFF;
+  border-radius: 40px;
+}
+
+.btn-lg:hover {
+  color: rgba(138, 119, 98, 0.8);
+  background: #FFF;
+  border: 2px solid rgba(138, 119, 98, 0.8);
+}
