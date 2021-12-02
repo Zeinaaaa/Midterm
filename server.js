@@ -44,6 +44,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const cartRoutes = require('./routes/cart');
 const menuRoutes = require("./routes/menu");
+const { Template } = require("ejs");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -69,7 +70,40 @@ app.get("/confirm", (req, res) => {
   res.render("confirm");
 });
 
+// const startingMinutes = 15;
+// let time = startingMinutes * 60;
 
+// const count = document.getElementById('countdown');
+// setInterval(updateCountDown, 1000);
+
+// const updateCountDown = () => {
+//   let minutes = Math.floor(time / 60);
+//   let seconds = time % 60;
+
+//   seconds = seconds < 10 ? "0" = seconds : seconds;
+//   countdownEl.innerHTML = `${minutes}:${seconds}`
+//   time --;
+// }
+
+// the route for the track
+app.get("/track", (req, res) => {
+  const startingMinutes = 15;
+  let time = startingMinutes * 60;
+
+
+  // const updateCountDown = () => {
+  //   const count = document.getElementById('countdown');
+  //   let minutes = Math.floor(time / 60);
+  //   let seconds = time % 60;
+
+  //   seconds = seconds < 10 ? "0" + seconds : seconds;
+  //   countdownEl.innerHTML = `${minutes}:${seconds}`
+  //   time --;
+  // }
+
+  // TemplateVars = updateCountDown();
+  res.render("track");
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
