@@ -13,6 +13,7 @@
  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
  <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+ <link rel="stylesheet" href="/styles/menu.css" type="text/css" />
 
  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
  <!-- <script type="text/javascript" src="/public/scripts/total-money-counter.js"></script> -->
@@ -21,45 +22,103 @@
 <body>
   <%- include('_header') %>
   <main>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img brownies" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#777"/>
+          <image href="https://github.com/Zeinaaaa/Midterm/blob/master/food_photos/molly-keesling-GbCeqX0kAUM-unsplash%20(1).jpg?raw=true"/>
+        </svg>
+
+        <div class="container">
+          <div class="carousel-caption text-start caption-right">
+            <h1>In a rush this morning?</h1>
+            <p>We got you covered with our limited menu of high quality coffees, teas and pastries.</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Item</th>
-          <th scope="col">Name</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
+      <thead class="cart-thead">
+        <tr class="cart-tr">
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
         </tr>
       </thead>
 
       <tbody>
           <% for (const item of cart) { %>
           <tr>
-            <th><svg class="bd-placeholder-img rounded-circle" width="160" height="160" margin-bottom="2em" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 160x160" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text><image href= <%= item.img%>/></svg></th>
-            <td><%= item.menu_name %></td>
-            <td><%= item.quantity %></td>
-            <td>$<%= item.price * item.quantity %></td>
+            <td class="card-product" data-th="Product">
+                <div class="row">
+                    <div class="col-md-3 text-left">
+                      <svg class="bd-placeholder-img rounded-circle" width="160" height="160" margin-bottom="2em" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 160x160" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text><image href= <%= item.img%>/></svg>
+                    </div>
+                    <div class="col-md-9 text-center mt-sm-2">
+                        <h6 class="cart-name"><%= item.menu_name %></h6>
+                        <p class="font-weight-light"><%= item.type%></p>
+                    </div>
+                </div>
+            </td>
+            <td class="card-price" data-th="Price">$<%= item.price * item.quantity %>.00</td>
+            <td class="card-quantity" data-th="Quantity">
+                <input type="number" class="form-control form-control-lg text-center" value="<%= item.quantity %>">
+            </td>
+            <td class="card-actions" class="actions" data-th="">
+                <div class="text-right">
+                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+
+                    </button>
+                    <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+
+                    </button>
+                </div>
+            </td>
           </tr>
           <% } %>
       </tbody>
     </table>
 
     </div>
-    <div class="total">
-      Total: $<%= totPrice %>
+    <div class="row">
+      <div class="column">
+    <div class="card brownie1" >
+      <div class="card-body">
+        <h5 class="card-title">Total:
+          <h5>$<%= totPrice %>.00</h5>
+      </div></h5>
+        <p class="card-text">Please be sure to enter a phone number so we can notify when to pick up your order!</p>
+        <form action="/api/confirm-order" method="get">
+
+          <input type="submit" value="Order Now" class="btn btn-warning btn-lg">
+        </form>
+      </div>
     </div>
-    <div id="order">
-      <form action="/api/confirm-order" method="get">
-        <input type="submit" value="Order Now">
-      </form>
+  <div class="column">
+        <div class="card brownie1">
+          <div class="card-body">
+            <div class="row mt-4 d-flex align-items-center">
+              <div id="order">
+                <div class="col-lg mb-3 mb-m-1 order-md-1 text-md-center">
+                    <a href="/api/menu"> Back to Menu</a>
+                </div>
+              </div>
+            <div id="clear-cart">
+              <form action="/api/cart/clear" method="get">
+                <input type="submit" value="Clear Cart">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="clear-cart">
-      <form action="/api/cart/clear" method="get">
-        <input type="submit" value="Clear Cart">
-      </form>
-    </div>
+  </div>
+
   </main>
 </body>
 </html>
-
 
 
