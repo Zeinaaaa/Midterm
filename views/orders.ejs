@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="/styles/orders.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
+  <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
+
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/making-time.js"></script>
@@ -25,50 +27,82 @@
   <%- include('_header') %>
 
   <main>
-    <h4>You Order in Progress</h4>
-    <form action="/api/orders/cancel" method="get">
-      <input type="submit" value="Cancel This Order">
-    </form>
-
-    <div class="waiting-time">Estimated waiting time: <%= totMakingTime %>min</div>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Item</th>
-          <th scope="col">Name</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
-        </tr>
-      </thead>
-
-      <tbody>
-          <% for (const item of data) { %>
-          <tr>
-            <th><svg class="bd-placeholder-img rounded-circle" width="160" height="160" margin-bottom="2em" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 160x160" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text><image href= <%= item.img%>/></svg></th>
-            <td><%= item.menu_name %></td>
-            <td><%= item.quantity %></td>
-            <td>$<%= item.price * item.quantity %></td>
-          </tr>
-          <% } %>
-      </tbody>
-    </table>
-
-    <div id="previous">
-      <h3>Your order history</h3>
-      <div id="history-table-head">
-        <div class="th-time">Order Time</div>
-        <div class="th-total">Order Total</div>
-      </div>
-
-      <% for (const item of prevOrders) { %>
-        <article class="previous-orders" >
-          <div class="date"><%= item.order_date %></div>
-          <div class="total"><%= item.order_total %></div>
-        </article>
-      <% } %>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     </div>
-  </main>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img brownies" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#777"/>
+          <image href="https://github.com/Zeinaaaa/Midterm/blob/master/food_photos/neworders.png?raw=true"/>
+        </svg>
+
+        <div class="container">
+          <div class="carousel-caption text-start caption-right">
+            <h1>Your Order is in Progress </h1>
+            <h6>Estimated waiting time: 15 minutes</h6>
+            <p><form method="get" action="/api/orders/cancel"><button type="submit" value="Cancel This Order" class="btn btn-light"> Cancel this Order </button></form></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+<table class="table table-hover table-sm">
+  <thead class="cart-thead">
+    <tr class="cart-tr text-center">
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+  </thead>
+
+  <tbody class="justify-content-center">
+      <% for (const item of data) { %>
+      <tr>
+        <td class="card-product" data-th="Product">
+            <div class="row">
+                <div class="col-md-3 text-left">
+                  <svg class="bd-placeholder-img rounded-circle" width="160" height="160" margin-bottom="2em" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 160x160" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text><image href= <%= item.img%>/></svg>
+                </div>
+                <div class="col-md-9 text-center mt-sm-2">
+                    <h6 class="cart-name"><%= item.menu_name %></h6>
+                </div>
+            </div>
+        </td>
+        <td class="card-price" data-th="Price">$<%= item.price * item.quantity %>.00</td>
+
+        <td class="card-quantity" data-th="Quantity">
+          <p><%= item.quantity %></p>
+      </td>
+
+      </tr>
+      <% } %>
+  </tbody>
+</table>
+
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Order Time</th>
+        <th scope="col">Order Total</th>
+        <th scope="col">Times Ordered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const item of prevOrders) { %>
+      <tr>
+        <th scope="row">1</th>
+        <td><%= item.order_date %></td>
+        <td><%= item.order_total %></td>
+        <% } %>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+
 
   <!-- adding bootstrapscripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -79,3 +113,6 @@
   <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
