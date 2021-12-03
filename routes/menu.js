@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 //requiring twilio after installing.
-const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+// const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
 
 // this is the twilio function, can be used in any route.
