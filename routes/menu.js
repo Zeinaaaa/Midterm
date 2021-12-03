@@ -18,8 +18,8 @@ const sendTextMessage = () => {
     to: '9055167460',
     from: '+12075033250'
   }).then(message => console.log(message))
-  .catch(error => console.log(error))
-}
+    .catch(error => console.log(error));
+};
 
 
 module.exports = (db) => {
@@ -27,9 +27,9 @@ module.exports = (db) => {
     db.query(`SELECT * FROM menu;`)
       .then(data => {
         const menu = data.rows;
-        templateVars = {menu}
+        templateVars = {menu};
         // console.log("menu : ", menu);
-        res.render("menu", templateVars)
+        res.render("menu", templateVars);
       })
       .catch(err => {
         res

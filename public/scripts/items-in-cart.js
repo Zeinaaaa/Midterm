@@ -8,7 +8,7 @@ const getItemsInCart = function(user_id) {
     .catch((err) => {
       console.log(err.message);
     });
-}
+};
 
 
 const addItemsToCart = function(inputObj) {
@@ -32,7 +32,7 @@ const addItemsToCart = function(inputObj) {
       return res.rows[0];
     })
     .catch(err => console.log(err.message));
-}
+};
 
 
 module.exports = {
