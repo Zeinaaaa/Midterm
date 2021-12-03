@@ -16,20 +16,20 @@ module.exports = (db) => {
     `;
     const value = [user_id];
     return db.query(queryString, value)
-    .then(itemsInCart => {
-      const cart = itemsInCart.rows;
-      let totPrice = 0;
-      cart.forEach(elm => {
-        totPrice += elm.price * elm.quantity;
+      .then(itemsInCart => {
+        const cart = itemsInCart.rows;
+        let totPrice = 0;
+        cart.forEach(elm => {
+          totPrice += elm.price * elm.quantity;
+        });
+        const templateVars = { cart, totPrice };
+        // console.log('cart.js - templateVars:', templateVars);
+        res.render('cart', templateVars);
       })
-      const templateVars = { cart, totPrice };
-      // console.log('cart.js - templateVars:', templateVars);
-      res.render('cart', templateVars);
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  });
 
   // add an item to cart
   router.post('/:menu_id', (req, res) => {
@@ -38,7 +38,7 @@ module.exports = (db) => {
     // console.log(req.params)
     const menu_id = req.params.menu_id;
     const quantity = req.body.quantity;
-    const queryString1 = `SELECT * FROM menu WHERE id = $1`
+    const queryString1 = `SELECT * FROM menu WHERE id = $1`;
     const values1 = [menu_id];
     db.query(queryString1, values1)
       .then(data => {
@@ -58,31 +58,31 @@ module.exports = (db) => {
           selectedMenu.price,
           selectedMenu.img,
           selectedMenu.quantity
-        ]
+        ];
         db.query(queryString2, values2)
-        .then(data => {
+          .then(data => {
           // console.log('cart.js - data.rows:', data.rows);
-          res.redirect('../menu');
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
+            res.redirect('../menu');
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
 
       })
       .catch((err) => {
         console.log(err.message);
       });
-  })
+  });
 
   router.get('/clear', (req, res) => {
-    const queryString = `delete from items where user_id = $1`
+    const queryString = `delete from items where user_id = $1`;
     const values = [user_id];
     db.query(queryString, values)
-    .then(res.redirect('/api/cart'))
-    .catch((err) => {
-      console.log(err.message);
-    });
-  })
+      .then(res.redirect('/api/cart'))
+      .catch((err) => {
+        console.log(err.message);
+      });
+  });
 
   return router;
 };

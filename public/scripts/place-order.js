@@ -4,19 +4,19 @@ const placeOrder = function(user_id) {
     FROM items
     WHERE user_id = $1
   `;
-  const value = [user_id]
+  const value = [user_id];
   return pool.query(queryString, value)
-  .then(res => {
+    .then(res => {
     // return data in format of {manu_name: quantity, menu_name: quantity}
-    const data = res.rows;
-    const order = {};
-    data.forEach(elm => {
-      order[elm.menu_name] = elm.quantity;
+      const data = res.rows;
+      const order = {};
+      data.forEach(elm => {
+        order[elm.menu_name] = elm.quantity;
+      });
+      console.log(order);
+      return order;
     })
-    console.log(order);
-    return order;
-  })
-  .catch(err => console.log(err.message));
+    .catch(err => console.log(err.message));
 };
 
 module.exports = { placeOrder };

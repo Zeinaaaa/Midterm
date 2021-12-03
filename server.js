@@ -109,7 +109,7 @@ app.get("/track", (req, res) => {
 
   // TemplateVars = updateCountDown();
   res.render("track");
-})
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
