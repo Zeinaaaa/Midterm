@@ -23,11 +23,11 @@ It is important to note that this is a food ordering and pickup app for a single
 
 - Confirmation animation using HTML and CSS on the confirm page 
 
- -Rainbow gradient progress bar for order tracking 
+- Rainbow gradient progress bar for order tracking 
 
--Users can see their order history.
+- Users can see their order history.
 
--Users can clear their cart as well as cancel their order and receive confirmation.
+- Users can clear their cart as well as cancel their order and receive confirmation.
 
 - ### Improvements
 
