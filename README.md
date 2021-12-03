@@ -56,7 +56,6 @@ Go to `localhost:8080` in your web browser to see the page
 - node-sass-middleware
 - pg
 - pg-native
-- socket.io
 - twilio
 
 ## Screenshots & GIFs
